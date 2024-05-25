@@ -1,0 +1,41 @@
+import random
+
+def draw_card():
+    cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+    return random.choice(cards)
+
+def main():
+    player_score = 0
+    computer_score = 0
+
+    while player_score < 21:
+        choice = input("Хотите взять еще карту? (y/n): ")
+
+        if choice.lower() == 'y':
+            card = draw_card()
+            player_score += card
+            print(f"Вы взяли карту: {card}")
+            print(f"Ваш счёт: {player_score}")
+        else:
+            break
+
+    while computer_score < 17:
+        card = draw_card()
+        computer_score += card
+
+    print(f"Счёт игрока: {player_score}")
+    print(f"Счёт компьютера: {computer_score}")
+
+    if player_score > 21:
+        print("Игрок проиграл!")
+    elif computer_score > 21:
+        print("Компьютер проиграл!")
+    elif player_score == computer_score:
+        print("Ничья!")
+    elif player_score > computer_score:
+        print("Игрок победил!")
+    else:
+        print("Компьютер победил!")
+
+if __name__ == "__main__":
+    main()
